@@ -1,0 +1,10 @@
+customtkinter
+python-dotenv
+openai
+requests
+supabase
+pillow
+pydub
+aiohttp
+tenacity
+discord.py

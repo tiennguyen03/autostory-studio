@@ -1,0 +1,9 @@
+.env
+*.mp3
+__pycache__/
+venv/
+
+# Ignore local test files
+tests/
+articles/
+brainstorm.txt
