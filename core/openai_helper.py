@@ -22,6 +22,8 @@ Special instructions for narration:
 - End beats with shocking or dramatic words for impact.
 - Use cold, factual verbs like "cut," "burned," "vanished."
 - Avoid commentary or explanation — just narration.
+- Keep the total script around the requested word count. 
+- Never exceed by more than 10 percent or fall short by more than 10%.
 
 Beat formatting rules:
 - Output **one beat per line.**
@@ -78,9 +80,15 @@ def generateScript(article_text, approx_length=90):
         str: The generated script text.
     """
 
+    def seconds_to_words(seconds, wpm=160):
+        return int((seconds / 60) * wpm)
+
+    word_budget = seconds_to_words(approx_length)
+
     user_prompt = (
         f"Use the following article as your only source material:\n\n{article_text}\n\n"
-        f"Rewrite it into a {approx_length}-second TikTok script. "
+        f"Rewrite it into a TikTok script about {word_budget} words long "
+        f"(≈{approx_length} seconds when read aloud at normal pace). "
         "Follow the 7-part structure strictly, do not add extra parts or commentary."
     )
 
@@ -99,7 +107,9 @@ def generateScript(article_text, approx_length=90):
     if not resp.choices[0].message:
         raise RuntimeError(f"Empty message in response: {resp}")
 
-    return resp.choices[0].message.content
+    output = resp.choices[0].message.content
+    print(f"📝 Generated script length: {len(output.split())} words (target ≈ {word_budget})")
+    return output
 
 def generateBeats(script_text):
     """
@@ -125,3 +135,4 @@ def generateBeats(script_text):
         beats = [b.strip() for b in raw_beats if b.strip()]
 
     return beats
+

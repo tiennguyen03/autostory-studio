@@ -26,7 +26,7 @@ def generateVoiceOvers(script_text,
     # Default settings if none provided
     if voice_settings is None:
         voice_settings = {
-            "speed": 1.0,
+            "speed": 0.9,
             "stability": 0.5,
             "similarity_boost": 0.75,
             "style_exaggeration": 0.0
