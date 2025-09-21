@@ -16,14 +16,12 @@ structure_prompt = """
 Follow this 7-part structure exactly, but DO NOT label the parts in the output.
 Do not write things like '🟢 CONTEXT (PART 1)' or '🟡 REVEAL (PART 7)' — only output the story text.
 
-Special instructions for narration:
-- Use "..." for dramatic pauses.
-- Vary sentence lengths: mix short, punchy lines with slightly longer factual ones.
-- End beats with shocking or dramatic words for impact.
-- Use cold, factual verbs like "cut," "burned," "vanished."
-- Avoid commentary or explanation — just narration.
-- Keep the total script around the requested word count. 
-- Never exceed by more than 10 percent or fall short by more than 10%.
+Narration style:
+- Cold, detached, and factual — like a documentary voiceover.
+- Use dramatic pauses ("...") for tension.
+- Mix short, blunt sentences with occasional longer descriptive ones.
+- End some beats with sharp, unsettling words for impact.
+- Never add commentary, opinion, or explanation.
 
 Beat formatting rules:
 - Output **one beat per line.**
@@ -31,41 +29,46 @@ Beat formatting rules:
 - Never combine multiple separate ideas into one beat.
 - Break up complex details into multiple beats so each is simple and visual.
 - Do NOT output long paragraphs. Always use one line = one beat.
+- Keep the total script around the requested word count (±10%).
 
 The hidden structure you must follow:
 1. CONTEXT
    - Start with the date and place: “It’s [year]. [City or country].”
-   - Introduce characters and setup in simple, factual beats
-   - Add a cultural or shocking historical norm
+   - Introduce the main people and setup in simple, factual beats.
+   - Add one cultural or historical detail that sets the scene.
 
 2. SMALL TWIST
-   - Use a transitional beat like “And for a while… it worked.”
-   - Add a beat or two showing early success or tension building
+   - Insert a beat that suggests calm, stability, or early tension.
+   - Keep it subtle — life seemed normal, or something unusual went unnoticed.
 
 3. PLOT TWIST
-   - Show what went wrong
-   - Add betrayal, ambition, or power struggle
-   - End with a dramatic shift (exile, downfall, turning point)
+   - Describe the turning point when everything went wrong.
+   - Show betrayal, violence, or sudden disaster.
+   - End this section with a dramatic shift or consequence.
 
 4. CONTEXT
-   - Show how the main character responded
-   - Use short, visual beats of actions
-   - Mention an important alliance if relevant
+   - Show how the main person or community reacted.
+   - Use short, visual beats of actions or movements.
+   - Mention an alliance, suspicion, or key clue if relevant.
 
 5. SMALL TWIST
-   - Use a quiet tension beat (e.g. “And one night… she snuck back in.”)
-   - Do not overexplain — keep it minimal
+   - Insert a quiet moment of tension or mystery.
+   - Keep it understated, no long explanations.
 
 6. FINAL CONSEQUENCE
-   - Reveal the major event or fallout
-   - Keep it mysterious (“No one knows how.” “But one thing was clear…”)
+   - Describe the outcome or fallout.
+   - Leave an air of uncertainty or mystery.
 
 7. REVEAL
-   - Final punchline with identity: “And the [girl/man/place] who did it… was [name].”
+   - End with a chilling final beat.
+   - This can be the identity of the person, the place, or a key fact that leaves the audience stunned.
+   - Keep it short, cold, and factual — one line that delivers closure or shock.
+   - The wording should feel natural, not formulaic. Do not always use the same sentence pattern.
 
-Tone: visual, cold, factual — like a narrated historical scene.
-Use disturbing facts from the actual cases, and make the plot twist disturbing.
-Your final output must ONLY be the story text, with each beat already separated line by line.
+Tone:
+- Visual, factual, and cinematic — like scenes strung together.
+- Facts should disturb by themselves; do not exaggerate.
+- Every beat must be vivid and visual, as if it could be drawn into one frame.
 """
 
 def generateScript(article_text, approx_length=90):

@@ -42,5 +42,5 @@ def generateVoiceOvers(script_text,
     if resp.status_code == 200:
         with open("voice_test.mp3","wb") as f:
             f.write(resp.content)
-        print("Voiceover saved to {output_file}")
+        print(f"Voiceover saved to {output_file}")
     else: print(f"Error {resp.status_code}: {resp.text}")
