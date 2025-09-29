@@ -75,3 +75,6 @@ def makeImagePrompts(beats, style, article_text=""):
 
     # Return all generated prompts as a list
     return image_prompts
+
+def animateImages():
+    pass

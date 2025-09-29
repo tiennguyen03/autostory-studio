@@ -11,8 +11,7 @@ if not ELEVENLABS_API_KEY:
 
 eleven = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
-def generateVoiceOvers(script_text, 
-                       output_file="voiceover.mp3",
+def generateVoiceOvers(script_text, output_path,
                        voice_id="MFZUKuGQUsGJPQjTS4wC", 
                        voice_settings=None):
 
@@ -40,7 +39,7 @@ def generateVoiceOvers(script_text,
     resp = requests.post(elevenLabsURL, headers=headers, json=data)
 
     if resp.status_code == 200:
-        with open("voice_test.mp3","wb") as f:
+        with open(output_path,"wb") as f:
             f.write(resp.content)
-        print(f"Voiceover saved to {output_file}")
+        print(f"Voiceover saved to {output_path}")
     else: print(f"Error {resp.status_code}: {resp.text}")
